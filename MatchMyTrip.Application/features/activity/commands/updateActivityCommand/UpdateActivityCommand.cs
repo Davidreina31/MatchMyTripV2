@@ -10,6 +10,7 @@ namespace MatchMyTrip.Application.features.activity.commands.updateActivityComma
 {
     public class UpdateActivityCommand : IRequest<ActivityCommandResponse>
     {
+        public Guid Id { get; set; }
         public string ActivityName { get; set; }
     }
 }

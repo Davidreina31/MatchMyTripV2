@@ -19,8 +19,4 @@
     <ProjectReference Include="..\MatchMyTrip.Persistence\MatchMyTrip.Persistence.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

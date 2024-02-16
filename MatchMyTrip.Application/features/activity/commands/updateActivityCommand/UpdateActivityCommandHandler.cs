@@ -41,7 +41,9 @@ namespace MatchMyTrip.Application.features.activity.commands.updateActivityComma
 
             if (response.Success)
             {
-                var activity = new Activity() { ActivityName = request.ActivityName };
+                var activity = new Activity() { 
+                    Id = request.Id,
+                    ActivityName = request.ActivityName };
                 activity = await _repo.UpdateAsync(activity);
                 response.Activity = _mapper.Map<ActivityDTO>(activity);
             }
