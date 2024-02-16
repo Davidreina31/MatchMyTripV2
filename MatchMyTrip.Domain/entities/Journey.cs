@@ -13,10 +13,10 @@ namespace MatchMyTrip.Domain.entities
 
         public Seasons Seasons { get; set; }
 
-        [ForeignKey("Profile")]
-        public Guid ProfileId { get; set; }
+        [ForeignKey("User")]
+        public Guid UserId { get; set; }
 
-        public Profile Profile { get; set; }
+        public User User { get; set; }
 
         public List<Journey_Activity> Journey_Activities { get; set; }
     }

@@ -22,10 +22,10 @@ namespace MatchMyTrip.Domain.entities
 
         public bool Favorite { get; set; }
 
-        [ForeignKey("Profile")]
-        public Guid ProfileId { get; set; }
+        [ForeignKey("User")]
+        public Guid UserId { get; set; }
 
-        public Profile Profile { get; set; }
+        public User User { get; set; }
 
         [ForeignKey("Journey")]
         public Guid JourneyId { get; set; }

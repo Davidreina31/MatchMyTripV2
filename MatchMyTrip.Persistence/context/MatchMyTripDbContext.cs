@@ -20,7 +20,6 @@ namespace MatchMyTrip.Persistence.context
         public DbSet<Journey_Activity> Journey_Activities { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Match_Activity> Match_Activities { get; set; }
-        public DbSet<Profile> Profiles { get; set; }
         public DbSet<User> Users { get; set; }
 
     }

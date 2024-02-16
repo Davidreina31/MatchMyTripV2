@@ -7,15 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="features\filter\" />
     <Folder Include="features\journey\" />
     <Folder Include="features\journey_activity\" />
     <Folder Include="features\match\" />
     <Folder Include="features\match_activity\" />
-    <Folder Include="features\match_profile\" />
     <Folder Include="features\user\" />
-    <Folder Include="features\profile_filter\" />
-    <Folder Include="features\profile\" />
   </ItemGroup>
 
   <ItemGroup>
