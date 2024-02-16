@@ -19,8 +19,4 @@
     <ProjectReference Include="..\MatchMyTrip.Application\MatchMyTrip.Application.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="repositories\" />
-  </ItemGroup>
-
 </Project>
