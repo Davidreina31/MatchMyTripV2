@@ -21,9 +21,5 @@ namespace MatchMyTrip.Domain.entities
         public List<Match> Matches { get; set; }
 
         public List<Journey> Journeys { get; set; }
-
-        public List<Profile_Filter> Profile_Filters { get; set; }
-
-        public List<Match_Profile> Match_Profiles { get; set; }
     }
 }

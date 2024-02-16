@@ -33,7 +33,5 @@ namespace MatchMyTrip.Domain.entities
         public Journey Journey { get; set; }
 
         public List<Match_Activity> Match_Activities { get; set; }
-
-        public List<Match_Profile> Match_Profiles { get; set; }
     }
 }
