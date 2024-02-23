@@ -35,7 +35,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<UserDTO>>> GetById(Guid id)
+        public async Task<ActionResult<UserDTO>> GetById(Guid id)
         {
             var dtos = await _mediator.Send(new GetUserDetailsQuery() { Id = id });
             return Ok(dtos);
