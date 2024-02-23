@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="features\journey_activity\" />
     <Folder Include="features\match_activity\" />
   </ItemGroup>
 
