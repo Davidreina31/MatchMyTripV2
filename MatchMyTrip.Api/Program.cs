@@ -18,6 +18,7 @@ builder.Services.AddDbContext<MatchMyTripDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("MatchMyTripConnectionString")));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped<IMatchRepository, MatchRepository>();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
