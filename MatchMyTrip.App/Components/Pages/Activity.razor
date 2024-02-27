@@ -2,6 +2,11 @@
 
 <h3>Activity</h3>
 
+@if(Activities == null)
+{
+    <p><em>Loading...</em></p>
+}
+
 @foreach(var item in Activities)
 {
     <h4>@item.ActivityName</h4>
