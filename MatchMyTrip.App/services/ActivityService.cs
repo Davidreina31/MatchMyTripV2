@@ -4,10 +4,9 @@ using System.Text.Json;
 
 namespace MatchMyTrip.App.services
 {
-    public class ActivityService : IActivityService
+    public class ActivityService : BaseService, IActivityService
     {
         private readonly HttpClient _client;
-        private readonly string _url = "https://localhost:7249/";
 
         public ActivityService(HttpClient client)
         {
@@ -17,7 +16,7 @@ namespace MatchMyTrip.App.services
         public async Task<List<ActivityDTO>> GetActivities()
         {
             var activities =  await JsonSerializer.DeserializeAsync<List<ActivityDTO>>
-                (await _client.GetStreamAsync(_url + $"api/Activity"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+                (await _client.GetStreamAsync(_url + "api/Activity"), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
             return activities;
         }
