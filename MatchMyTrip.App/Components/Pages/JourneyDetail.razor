@@ -1,0 +1,8 @@
+﻿@page "/journey/{Id}"
+
+<h3>JourneyDetail</h3>
+
+@foreach(var item in Activities)
+{
+    <h4>@item.Activity.ActivityName</h4>
+}
