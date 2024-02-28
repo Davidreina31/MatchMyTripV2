@@ -14,18 +14,20 @@
     <tbody>
         <div>
         </div>
-        <tr>
-            @foreach (var item in UserList)
-            {
+        @foreach (var item in UserList)
+        {
+            <tr>
+
                 <td>@item.Id</td>
                 <td>@item.FirstName</td>
                 <td>@item.LastName</td>
                 <td>@item.UserName</td>
                 <td>@item.Role</td>
-            }
 
-            @* <td><input type="button" class="btn-success" value="modifier" (click)="updateRole(item.id)"></td>
-            <td><input type="button" class="btn-danger" value="Supprimer" (click)="deleteUser(item.id)"></td> *@
-        </tr>
+                <td><a href="@("/profile/" + item.Id)">Voir profil</a></td>
+            </tr>
+        }
+
+        @* <td><input type="button" class="btn-danger" value="Supprimer" (click)="deleteUser(item.id)"></td> *@
     </tbody>
 </table>
