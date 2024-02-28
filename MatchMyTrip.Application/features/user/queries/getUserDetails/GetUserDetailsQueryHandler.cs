@@ -14,9 +14,9 @@ namespace MatchMyTrip.Application.features.user.queries.getUserDetails
     public class GetUserDetailsQueryHandler : IRequestHandler<GetUserDetailsQuery, UserQueryDTO>
     {
         private readonly IMapper _mapper;
-        private readonly IRepository<User> _repo;
+        private readonly IUserRepository _repo;
 
-        public GetUserDetailsQueryHandler(IMapper mapper, IRepository<User> repo)
+        public GetUserDetailsQueryHandler(IMapper mapper, IUserRepository repo)
         {
             _mapper = mapper;
             _repo = repo;
@@ -24,7 +24,7 @@ namespace MatchMyTrip.Application.features.user.queries.getUserDetails
 
         public async Task<UserQueryDTO> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
         {
-            var user = await _repo.GetByIdAsync(request.Id);
+            var user = await _repo.GetUser(request.Id);
             return _mapper.Map<UserQueryDTO>(user);
         }
     }

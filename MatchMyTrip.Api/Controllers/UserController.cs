@@ -7,7 +7,7 @@ using MatchMyTrip.Application.features.journey.queries.getJournies;
 using MatchMyTrip.Application.features.user.commands.createUserCommand;
 using MatchMyTrip.Application.features.user.commands.deleteUserCommand;
 using MatchMyTrip.Application.features.user.commands.updateUserCommand;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Application.features.user.queries.getUserDetails;
 using MatchMyTrip.Application.features.user.queries.getUsers;
 using MediatR;
