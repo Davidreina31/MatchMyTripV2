@@ -1,6 +1,6 @@
 ﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.activity.dto;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 using System.Text.Json;
 
 namespace MatchMyTrip.App.services
@@ -14,9 +14,9 @@ namespace MatchMyTrip.App.services
             _client = client;
         }
 
-        public async Task<UserDTO> GetUserById(Guid id)
+        public async Task<UserQueryDTO> GetUserById(Guid id)
         {
-            var user = await JsonSerializer.DeserializeAsync<UserDTO>
+            var user = await JsonSerializer.DeserializeAsync<UserQueryDTO>
                 (await _client.GetStreamAsync(_url + "api/User/" + id), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
 
             return user;

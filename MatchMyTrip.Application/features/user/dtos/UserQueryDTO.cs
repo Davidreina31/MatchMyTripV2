@@ -1,4 +1,6 @@
-﻿using MatchMyTrip.Domain.entities;
+﻿using MatchMyTrip.Application.features.journey.dto;
+using MatchMyTrip.Application.features.match.dto;
+using MatchMyTrip.Domain.entities;
 using MatchMyTrip.Domain.enums;
 using System;
 using System.Collections.Generic;
@@ -28,8 +30,8 @@ namespace MatchMyTrip.Application.features.user.dtos
 
         public Roles Role { get; set; }
 
-        public List<Match> Matches { get; set; }
+        public List<MatchDTO> Matches { get; set; }
 
-        public List<Journey> Journeys { get; set; }
+        public List<JourneyDTO> Journeys { get; set; }
     }
 }

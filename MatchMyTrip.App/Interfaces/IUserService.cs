@@ -1,12 +1,12 @@
 ﻿using MatchMyTrip.Application.features.activity.dto;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 
 namespace MatchMyTrip.App.Interfaces
 {
     public interface IUserService
     {
         Task<List<UserDTO>> GetUsers();
-        Task<UserDTO> GetUserById(Guid id);
+        Task<UserQueryDTO> GetUserById(Guid id);
 
     }
 }
