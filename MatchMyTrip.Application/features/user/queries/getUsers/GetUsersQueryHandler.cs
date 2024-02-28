@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MatchMyTrip.Application.contracts;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Domain.entities;
 using MediatR;
 using System;

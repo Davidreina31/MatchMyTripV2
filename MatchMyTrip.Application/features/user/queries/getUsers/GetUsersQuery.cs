@@ -1,4 +1,4 @@
-﻿using MatchMyTrip.Application.features.user.dto;
+﻿using MatchMyTrip.Application.features.user.dtos;
 using MediatR;
 using System;
 using System.Collections.Generic;

@@ -1,13 +1,14 @@
-﻿using MatchMyTrip.Domain.enums;
+﻿using MatchMyTrip.Domain.entities;
+using MatchMyTrip.Domain.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MatchMyTrip.Application.features.user.dto
+namespace MatchMyTrip.Application.features.user.dtos
 {
-    public class UserDTO
+    public class UserQueryDTO
     {
         public Guid Id { get; set; }
 
@@ -27,5 +28,8 @@ namespace MatchMyTrip.Application.features.user.dto
 
         public Roles Role { get; set; }
 
+        public List<Match> Matches { get; set; }
+
+        public List<Journey> Journeys { get; set; }
     }
 }

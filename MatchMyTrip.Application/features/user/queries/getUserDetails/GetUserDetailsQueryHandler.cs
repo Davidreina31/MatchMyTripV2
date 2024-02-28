@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using MatchMyTrip.Application.contracts;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Domain.entities;
 using MediatR;
 using System;
@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace MatchMyTrip.Application.features.user.queries.getUserDetails
 {
-    public class GetUserDetailsQueryHandler : IRequestHandler<GetUserDetailsQuery, UserDTO>
+    public class GetUserDetailsQueryHandler : IRequestHandler<GetUserDetailsQuery, UserQueryDTO>
     {
         private readonly IMapper _mapper;
         private readonly IRepository<User> _repo;
@@ -22,10 +22,10 @@ namespace MatchMyTrip.Application.features.user.queries.getUserDetails
             _repo = repo;
         }
 
-        public async Task<UserDTO> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
+        public async Task<UserQueryDTO> Handle(GetUserDetailsQuery request, CancellationToken cancellationToken)
         {
             var user = await _repo.GetByIdAsync(request.Id);
-            return _mapper.Map<UserDTO>(user);
+            return _mapper.Map<UserQueryDTO>(user);
         }
     }
 }
