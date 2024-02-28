@@ -10,6 +10,8 @@ using MatchMyTrip.Application.features.match.commands.updateMatchCommand;
 using MatchMyTrip.Application.features.match.dto;
 using MatchMyTrip.Application.features.match.queries.getMatchDetails;
 using MatchMyTrip.Application.features.match.queries.getMatches;
+using MatchMyTrip.Application.features.match.queries.getMatchesByJourneyId;
+using MatchMyTrip.Application.features.match.queries.getMatchesByUserId;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +40,20 @@ namespace MatchMyTrip.Api.Controllers
         public async Task<ActionResult<MatchDTO>> GetById(Guid id)
         {
             var dtos = await _mediator.Send(new GetMatchDetailsQuery() { Id = id });
+            return Ok(dtos);
+        }
+
+        [HttpGet("ByUserId/{id}")]
+        public async Task<ActionResult<List<MatchDTO>>> GetAllByUserId(Guid id)
+        {
+            var dtos = await _mediator.Send(new GetMatchesByUserIdQuery() { UserId = id });
+            return Ok(dtos);
+        }
+
+        [HttpGet("ByJourneyId/{id}")]
+        public async Task<ActionResult<List<MatchDTO>>> GetAllByJourneyId(Guid id)
+        {
+            var dtos = await _mediator.Send(new GetMatchesByJourneyIdQuery() { JourneyId = id });
             return Ok(dtos);
         }
 
