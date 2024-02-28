@@ -11,22 +11,22 @@ using System.Threading.Tasks;
 
 namespace MatchMyTrip.Application.features.journey_activity.queries.getSingleJourney_Activity
 {
-    public class GetSingleJourney_ActivityQueryHandler : IRequestHandler<GetSingleJourney_ActivityQuery, Journey_ActivityDTO>
+    public class GetSingleJourney_ActivityQueryHandler : IRequestHandler<GetSingleJourney_ActivityQuery, List<Journey_ActivityQueryDTO>>
     {
         private readonly IMapper _mapper;
-        private readonly IRepository<Journey_Activity> _repo;
+        private readonly IJourney_ActivityRepository _repo;
 
-        public GetSingleJourney_ActivityQueryHandler(IMapper mapper, IRepository<Journey_Activity> repo)
+        public GetSingleJourney_ActivityQueryHandler(IMapper mapper, IJourney_ActivityRepository repo)
         {
             _mapper = mapper;
             _repo = repo;
         }
 
-        public async Task<Journey_ActivityDTO> Handle(GetSingleJourney_ActivityQuery request, CancellationToken cancellationToken)
+        public async Task<List<Journey_ActivityQueryDTO>> Handle(GetSingleJourney_ActivityQuery request, CancellationToken cancellationToken)
         {
-            var journey_activity = await _repo.GetByIdAsync(request.Id);
+            var journey_activity = await _repo.GetAllByJourneyId(request.Id);
 
-            return _mapper.Map<Journey_ActivityDTO>(journey_activity);
+            return _mapper.Map<List<Journey_ActivityQueryDTO>>(journey_activity);
         }
     }
 }

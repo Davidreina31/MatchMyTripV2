@@ -23,6 +23,7 @@ namespace MatchMyTrip.Application.mapper
             CreateMap<MatchMyTrip.Domain.entities.User, UserQueryDTO>().ReverseMap();
             CreateMap<MatchMyTrip.Domain.entities.Match, MatchDTO>().ReverseMap();
             CreateMap<MatchMyTrip.Domain.entities.Journey_Activity, Journey_ActivityDTO>().ReverseMap();
+            CreateMap<MatchMyTrip.Domain.entities.Journey_Activity, Journey_ActivityQueryDTO>().ReverseMap();
             CreateMap<MatchMyTrip.Domain.entities.Match_Activity, Match_ActivityDTO>().ReverseMap();
         }
     }
