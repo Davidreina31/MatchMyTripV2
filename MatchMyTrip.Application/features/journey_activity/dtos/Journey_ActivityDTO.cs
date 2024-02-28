@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MatchMyTrip.Application.features.journey_activity.dto
+namespace MatchMyTrip.Application.features.journey_activity.dtos
 {
     public class Journey_ActivityDTO
     {

@@ -1,7 +1,7 @@
 ﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.activity.dto;
 using MatchMyTrip.Application.features.journey.dto;
-using MatchMyTrip.Application.features.journey_activity.dto;
+using MatchMyTrip.Application.features.journey_activity.dtos;
 using MatchMyTrip.Application.features.user.dtos;
 using Microsoft.AspNetCore.Components;
 

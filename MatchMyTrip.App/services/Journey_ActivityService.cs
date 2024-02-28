@@ -1,6 +1,6 @@
 ﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.activity.dto;
-using MatchMyTrip.Application.features.journey_activity.dto;
+using MatchMyTrip.Application.features.journey_activity.dtos;
 using System.Text.Json;
 
 namespace MatchMyTrip.App.services

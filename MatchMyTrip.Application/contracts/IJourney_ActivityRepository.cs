@@ -1,4 +1,4 @@
-﻿using MatchMyTrip.Application.features.journey_activity.dto;
+﻿using MatchMyTrip.Application.features.journey_activity.dtos;
 using MatchMyTrip.Domain.entities;
 using System;
 using System.Collections.Generic;

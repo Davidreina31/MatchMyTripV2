@@ -1,4 +1,4 @@
-﻿using MatchMyTrip.Application.features.journey_activity.dto;
+﻿using MatchMyTrip.Application.features.journey_activity.dtos;
 using MediatR;
 using System;
 using System.Collections.Generic;
