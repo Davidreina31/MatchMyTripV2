@@ -1,15 +1,17 @@
-﻿@page "/Users"
+﻿@page "/Profile"
 
-<h3>Users</h3>
+<h3>Mon profil</h3>
 
-@* @if (Users == null)
+@if (User == null)
 {
     <p><em>Loading...</em></p>
 }
- *@
-@* @foreach (var item in Users)
-{
-    <h4>@item.UserName</h4>
-} *@
+
 
 <p>@User.UserName</p>
+
+@foreach (var item in Journeys)
+{
+    <h4>@item.Destination</h4>
+    <h4>@item.NbrOfDays jours</h4>
+}
