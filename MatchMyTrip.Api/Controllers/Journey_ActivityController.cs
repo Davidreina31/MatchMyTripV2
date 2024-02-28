@@ -8,7 +8,7 @@ using MatchMyTrip.Application.features.journey_activity.commands.deleteJourney_A
 using MatchMyTrip.Application.features.journey_activity.dto;
 using MatchMyTrip.Application.features.journey_activity.queries.getJourney_Activities;
 using MatchMyTrip.Application.features.journey_activity.queries.getSingleJourney_Activity;
-using MatchMyTrip.Application.features.user.dto;
+using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Application.features.user.queries.getUserDetails;
 using MediatR;
 using Microsoft.AspNetCore.Http;
