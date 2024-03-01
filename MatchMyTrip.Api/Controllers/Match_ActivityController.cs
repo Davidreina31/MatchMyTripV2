@@ -1,6 +1,6 @@
 ﻿using MatchMyTrip.Application.features.journey_activity.commands.createJourney_ActivityCommand;
 using MatchMyTrip.Application.features.journey_activity.commands.deleteJourney_ActivityCommand;
-using MatchMyTrip.Application.features.journey_activity.dto;
+using MatchMyTrip.Application.features.journey_activity.dtos;
 using MatchMyTrip.Application.features.journey_activity.queries.getJourney_Activities;
 using MatchMyTrip.Application.features.journey_activity.queries.getSingleJourney_Activity;
 using MatchMyTrip.Application.features.match_activity.commands.createMatch_ActivityCommand;
