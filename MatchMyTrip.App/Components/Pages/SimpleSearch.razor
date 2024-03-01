@@ -1,0 +1,25 @@
+﻿@page "/simplesearch"
+
+<h3>SimpleSearch</h3>
+
+@foreach (var item in Users)
+{
+    <h4>@item.UserName</h4>
+    <h4>@item.FirstName</h4>
+    <h4>@item.LastName</h4>
+    <h4>@item.Email</h4>
+    <h4>@item.Role</h4>
+    <a href="@("/profile/" + item.Id)">Voir profil</a>
+    
+    <br/>
+    <br/>
+    @foreach (var journeys in item.Journeys)
+    {
+        <h3>@journeys.Destination</h3>
+        <h3>@journeys.NbrOfDays</h3>
+        <h3>@journeys.Seasons</h3>
+    }
+
+}
+
+

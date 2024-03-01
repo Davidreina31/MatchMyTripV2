@@ -2,6 +2,7 @@
 using MatchMyTrip.Application.features.search.commands.dto;
 using MatchMyTrip.Application.features.search.commands.searchByKeyWord;
 using MatchMyTrip.Application.features.search.commands.specificSearch;
+using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Domain.entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -22,7 +23,7 @@ namespace MatchMyTrip.Api.Controllers
 
 
         [HttpPost("searchByKeyWord")]
-        public async Task<ActionResult<SearchByKeyWordCommand>> GetByFilters([FromBody] SearchByKeyWordCommand searchByKeyWordCommand)
+        public async Task<ActionResult<List<UserQueryDTO>>> GetByKeyWords([FromBody] SearchByKeyWordCommand searchByKeyWordCommand)
         {
             var dto = await _mediator.Send(searchByKeyWordCommand);
             return Ok(dto);

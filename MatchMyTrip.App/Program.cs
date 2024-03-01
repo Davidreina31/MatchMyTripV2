@@ -12,6 +12,7 @@ builder.Services.AddHttpClient();
 builder.Services.AddScoped<IActivityService, ActivityService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJourney_ActivityService, Journey_ActivityService>();
+builder.Services.AddScoped<ISearchService, SearchService>();
 
 var app = builder.Build();
 
