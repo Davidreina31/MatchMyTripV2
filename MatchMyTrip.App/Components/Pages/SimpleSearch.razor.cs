@@ -3,6 +3,7 @@ using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.search.commands.searchByKeyWord;
 using MatchMyTrip.Application.features.user.dtos;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MatchMyTrip.App.Components.Pages
 {
@@ -12,11 +13,14 @@ namespace MatchMyTrip.App.Components.Pages
         public ISearchService SearchService { get; set; }
 
         public List<UserQueryDTO> Users { get; set; } = new List<UserQueryDTO>();
+        public SearchByKeyWordCommand SearchByKeyWord { get; set; } = new SearchByKeyWordCommand();
 
-        protected override async Task OnInitializedAsync()
+        
+        protected async Task HandleValidSubmit()
         {
-            SearchByKeyWordCommand searchByKeyWordCommand = new SearchByKeyWordCommand();
-            Users = await SearchService.GetMatchListByKeyWord(searchByKeyWordCommand);
+            Users = await SearchService.GetMatchListByKeyWord(SearchByKeyWord);
         }
+
+
     }
 }
