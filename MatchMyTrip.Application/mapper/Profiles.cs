@@ -4,6 +4,7 @@ using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.journey_activity.dtos;
 using MatchMyTrip.Application.features.match.dto;
 using MatchMyTrip.Application.features.match_activity.dto;
+using MatchMyTrip.Application.features.search.commands.dto;
 using MatchMyTrip.Application.features.user.dtos;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace MatchMyTrip.Application.mapper
             CreateMap<MatchMyTrip.Domain.entities.Journey_Activity, Journey_ActivityDTO>().ReverseMap();
             CreateMap<MatchMyTrip.Domain.entities.Journey_Activity, Journey_ActivityQueryDTO>().ReverseMap();
             CreateMap<MatchMyTrip.Domain.entities.Match_Activity, Match_ActivityDTO>().ReverseMap();
+            CreateMap<MatchMyTrip.Domain.entities.Filter, FilterDTO>().ReverseMap();
         }
     }
 }
