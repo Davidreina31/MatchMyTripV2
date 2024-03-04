@@ -20,7 +20,7 @@ namespace MatchMyTrip.App.Components.Pages
         {
             ErrorMsg = "";
             Users = await SearchService.GetMatchListByKeyWord(SearchByKeyWord);
-            if (Users.Count == 0)
+            if (Users == null || Users.Count == 0)
                 ErrorMsg = "Aucun résultat disponible.";
         }
     }

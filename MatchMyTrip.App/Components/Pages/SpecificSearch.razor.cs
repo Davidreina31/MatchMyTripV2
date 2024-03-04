@@ -15,20 +15,15 @@ namespace MatchMyTrip.App.Components.Pages
         public ISearchService SearchService { get; set; }
         public List<JourneyDTO> Journeys { get; set; } = new List<JourneyDTO>();
         public SpecificSearchCommand SearchByFilters { get; set; } = new SpecificSearchCommand();
-        public FilterDTO Filter { get; set; } = new FilterDTO();
         public string ErrorMsg { get; set; }
+
         protected async Task HandleValidSubmit()
         {
             ErrorMsg = "";
 
-            SearchByFilters.Filter = Filter;
-            SearchByFilters.Filter.Destination = "Phuket";
-            SearchByFilters.Filter.NbrOfDays = 3;
-            SearchByFilters.Filter.Seasons = Domain.enums.Seasons.Winter;
-
             Journeys = await SearchService.GetMatchListByFilters(SearchByFilters);
 
-            if (Journeys.Count == 0)
+            if (Journeys == null || Journeys.Count == 0)
                 ErrorMsg = "Aucun résultat disponible.";
 
         }

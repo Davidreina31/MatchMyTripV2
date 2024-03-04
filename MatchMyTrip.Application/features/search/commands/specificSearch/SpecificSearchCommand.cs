@@ -11,6 +11,6 @@ namespace MatchMyTrip.Application.features.search.commands.specificSearch
 {
     public class SpecificSearchCommand : IRequest<List<JourneyDTO>>
     {
-        public FilterDTO Filter { get; set; }
+        public FilterDTO Filter { get; set; } = new FilterDTO();
     }
 }
