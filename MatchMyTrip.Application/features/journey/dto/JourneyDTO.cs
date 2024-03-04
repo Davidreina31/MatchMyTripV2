@@ -21,5 +21,7 @@ namespace MatchMyTrip.Application.features.journey.dto
         public Guid UserId { get; set; }
 
         public UserDTO User { get; set; }
+
+        public int MatchScore { get; set; }
     }
 }

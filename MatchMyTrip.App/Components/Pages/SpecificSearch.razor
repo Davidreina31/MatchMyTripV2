@@ -35,20 +35,19 @@
                 <th scope="col">Destination</th>
                 <th scope="col">Nombre de jours</th>
                 <th scope="col">Saison</th>
+                <th scope="col">Match score</th>
                 <th></th>
-
-
             </tr>
         </thead>
         <tbody>
-            @foreach (var item in Journeys)
+            @foreach (var item in Journeys.OrderByDescending(x => x.MatchScore))
             {
                 <tr>
-
                     <td>@item.User.UserName</td>
                     <td>@item.Destination</td>
                     <td>@item.NbrOfDays</td>
                     <td>@item.Seasons</td>
+                    <td>@item.MatchScore/3</td>
 
                     <td><a href="@("/journey/" + item.Id)">Voir détails</a></td>
                 </tr>
