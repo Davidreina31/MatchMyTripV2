@@ -27,10 +27,14 @@ namespace MatchMyTrip.App.Components.Pages
             if (Journeys == null || Journeys.Count == 0)
                 ErrorMsg = "Aucun résultat disponible.";
 
-            foreach (var item in Journeys)
+            if (Journeys != null && Journeys.Count > 0)
             {
-                item.MatchScore = GetMatchScore(SearchByFilters, item);
+                foreach (var item in Journeys)
+                {
+                    item.MatchScore = GetMatchScore(SearchByFilters, item);
+                }
             }
+
         }
 
         private int GetMatchScore(SpecificSearchCommand command, JourneyDTO journey)
