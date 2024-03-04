@@ -1,5 +1,44 @@
 ﻿@page "/specificSearch"
+@rendermode InteractiveServer
 
 <h3>SpecificSearch</h3>
 
 
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">rechercher</button>
+
+<br />
+<br />
+<br />
+
+<h4>@ErrorMsg</h4>
+
+@if(Journeys != null)
+{
+    <table class="table table-striped table-light">
+        <thead>
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Pseudo</th>
+                <th></th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Journeys)
+            {
+                <tr>
+
+                    <td>@item.User.UserName</td>
+                    <td>@item.Destination</td>
+                    <td>@item.NbrOfDays</td>
+                    <td>@item.Seasons</td>
+
+                    <td><a href="@("/journey/" + item.Id)">Voir détails</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

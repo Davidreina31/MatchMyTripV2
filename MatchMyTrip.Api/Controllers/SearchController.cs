@@ -30,7 +30,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPost("searchByFilter")]
-        public async Task<ActionResult<SpecificSearchCommand>> GetByFilters([FromBody] SpecificSearchCommand specificSearchCommand)
+        public async Task<ActionResult<List<JourneyDTO>>> GetByFilters([FromBody] SpecificSearchCommand specificSearchCommand)
         {
             var dto = await _mediator.Send(specificSearchCommand);
             return Ok(dto);

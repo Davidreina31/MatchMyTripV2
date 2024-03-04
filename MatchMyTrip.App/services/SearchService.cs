@@ -3,6 +3,7 @@ using MatchMyTrip.Application.features.activity.dto;
 using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.search.commands.dto;
 using MatchMyTrip.Application.features.search.commands.searchByKeyWord;
+using MatchMyTrip.Application.features.search.commands.specificSearch;
 using MatchMyTrip.Application.features.user.dtos;
 using System.Net.Http;
 using System.Text;
@@ -19,9 +20,22 @@ namespace MatchMyTrip.App.services
             _client = client;
         }
 
-        public Task<List<JourneyDTO>> GetMatchListByFilters(FilterDTO filter)
+        public async Task<List<JourneyDTO>> GetMatchListByFilters(SpecificSearchCommand specificSearchCommand)
         {
-            throw new NotImplementedException();
+            var json =
+                new StringContent(JsonSerializer.Serialize(specificSearchCommand), Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync(_url + "api/Search/searchByFilter", json);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var journeys = await JsonSerializer.DeserializeAsync<List<JourneyDTO>>
+                (await response.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+                return journeys;
+            }
+
+            return null;
         }
 
         public async Task<List<UserQueryDTO>> GetMatchListByKeyWord(SearchByKeyWordCommand searchByKeyWordCommand)
