@@ -26,7 +26,6 @@ namespace MatchMyTrip.App.services
 
         public async Task<List<UserQueryDTO>> GetMatchListByKeyWord(SearchByKeyWordCommand searchByKeyWordCommand)
         {
-            searchByKeyWordCommand.KeyWord = "dave";
             var json =
                 new StringContent(JsonSerializer.Serialize(searchByKeyWordCommand), Encoding.UTF8, "application/json");
 
