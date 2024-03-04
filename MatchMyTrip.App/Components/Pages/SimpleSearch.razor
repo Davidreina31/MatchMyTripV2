@@ -7,7 +7,7 @@
 <br />
 <br />
 
-<input placeholder="entrer un mot clé" @bind="@SearchByKeyWord.KeyWord"/>
+<input placeholder="entrer un mot clé" @bind="@SearchByKeyWord.KeyWord" />
 <button type="submit" class="btn-primary" onclick="@HandleValidSubmit">rechercher</button>
 
 <br />
@@ -16,25 +16,30 @@
 
 <h4>@ErrorMsg</h4>
 
-@if(Users != null)
+@if (Users != null)
 {
-    @foreach (var item in Users)
-    {
-        <h4>@item.UserName</h4>
-        <h4>@item.FirstName</h4>
-        <h4>@item.LastName</h4>
-        <h4>@item.Email</h4>
-        <h4>@item.Role</h4>
-        <a href="@("/profile/" + item.Id)">Voir profil</a>
+    <table class="table table-striped table-light">
+        <thead>
+            <tr>
+                <th scope="col">Identifiant</th>
+                <th scope="col">Prénom</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Pseudo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Users)
+            {
+                <tr>
 
-        <br />
-        <br />
-        @foreach (var journeys in item.Journeys)
-        {
-            <h4>@journeys.Destination</h4>
-            <h4>@journeys.NbrOfDays</h4>
-            <h4>@journeys.Seasons</h4>
-        }
+                    <td>@item.Id</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.UserName</td>
 
-    }
+                    <td><a href="@("/profile/" + item.Id)">Voir profil</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
