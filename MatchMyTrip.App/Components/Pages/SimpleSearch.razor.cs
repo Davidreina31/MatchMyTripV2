@@ -14,10 +14,14 @@ namespace MatchMyTrip.App.Components.Pages
         public ISearchService SearchService { get; set; }
         public List<UserQueryDTO> Users { get; set; } = new List<UserQueryDTO>();
         public SearchByKeyWordCommand SearchByKeyWord { get; set; } = new SearchByKeyWordCommand();
+        public string ErrorMsg { get; set; }
 
         protected async Task HandleValidSubmit()
         {
+            ErrorMsg = "";
             Users = await SearchService.GetMatchListByKeyWord(SearchByKeyWord);
+            if (Users.Count == 0)
+                ErrorMsg = "Aucun résultat disponible.";
         }
     }
 }

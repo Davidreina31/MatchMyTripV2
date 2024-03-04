@@ -14,6 +14,8 @@
 <br />
 <br />
 
+<h4>@ErrorMsg</h4>
+
 @if(Users != null)
 {
     @foreach (var item in Users)
@@ -29,11 +31,10 @@
         <br />
         @foreach (var journeys in item.Journeys)
         {
-            <h3>@journeys.Destination</h3>
-            <h3>@journeys.NbrOfDays</h3>
-            <h3>@journeys.Seasons</h3>
+            <h4>@journeys.Destination</h4>
+            <h4>@journeys.NbrOfDays</h4>
+            <h4>@journeys.Seasons</h4>
         }
 
     }
 }
-
