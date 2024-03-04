@@ -21,8 +21,11 @@ namespace MatchMyTrip.Persistence.repositories
 
         public async Task<List<Journey>> GetMatchListByFilters(Filter filter)
         {
-            var result = await _context.Journeys.Where(x => x.Destination.ToLower().Contains(filter.Destination) &&
+            var result = await _context.Journeys.Include(x => x.User).Where(x => x.Destination.ToLower().Contains(filter.Destination) &&
             (x.Seasons == filter.Seasons || x.NbrOfDays == filter.NbrOfDays)).ToListAsync();
+
+            if (result.Count == 0)
+                result = await _context.Journeys.Include(x => x.User).Where(x => x.Destination.ToLower().Contains(filter.Destination)).ToListAsync();
 
             return result;
         }

@@ -9,7 +9,7 @@ namespace MatchMyTrip.Application.features.search.commands.dto
 {
     public class FilterDTO
     {
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         public string Destination { get; set; }
 

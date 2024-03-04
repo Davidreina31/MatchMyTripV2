@@ -1,4 +1,5 @@
-﻿using MatchMyTrip.Domain.enums;
+﻿using MatchMyTrip.Application.features.user.dtos;
+using MatchMyTrip.Domain.enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,5 +19,7 @@ namespace MatchMyTrip.Application.features.journey.dto
         public Seasons Seasons { get; set; }
 
         public Guid UserId { get; set; }
+
+        public UserDTO User { get; set; }
     }
 }
