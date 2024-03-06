@@ -14,12 +14,10 @@ namespace MatchMyTrip.Application.features.activity.commands.deleteActivityComma
 {
     public class DeleteActivityCommandHandler : IRequestHandler<DeleteActivityCommand>
     {
-        private readonly IMapper _mapper;
         private readonly IRepository<Activity> _repo;
 
-        public DeleteActivityCommandHandler(IMapper mapper, IRepository<Activity> repo)
+        public DeleteActivityCommandHandler(IRepository<Activity> repo)
         {
-            _mapper = mapper;
             _repo = repo;
         }
 
