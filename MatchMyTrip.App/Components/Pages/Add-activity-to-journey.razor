@@ -1,0 +1,18 @@
+﻿@page "/add-activity/{JourneyId}"
+@rendermode InteractiveServer
+
+<h3>Add_activity_to_journey</h3>
+
+@foreach (var item in Activities)
+{
+    <InputCheckbox id="activity" class="form-check-input" @bind-Value="@item.IsSelected"></InputCheckbox>
+    <label class="form-check-label" for="activity">
+        @item.ActivityName
+    </label>
+    <br />
+}
+
+<br />
+<br />
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">confirm</button>
+

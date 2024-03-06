@@ -10,5 +10,6 @@ namespace MatchMyTrip.Application.features.activity.dto
     {
         public Guid Id { get; set; }
         public string ActivityName { get; set; }
+        public bool IsSelected { get; set; }
     }
 }

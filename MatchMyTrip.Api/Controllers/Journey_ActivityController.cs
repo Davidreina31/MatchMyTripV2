@@ -42,7 +42,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CreateJourney_ActivityCommand>> Create([FromBody] CreateJourney_ActivityCommand command)
+        public async Task<ActionResult<Journey_ActivityDTO>> Create([FromBody] CreateJourney_ActivityCommand command)
         {
             var dto = await _mediator.Send(command);
             return Ok(dto);
@@ -50,10 +50,10 @@ namespace MatchMyTrip.Api.Controllers
 
 
         [HttpDelete]
-        public async Task<ActionResult<DeleteJourney_ActivityCommand>> Delete([FromQuery] DeleteJourney_ActivityCommand command)
+        public async Task<ActionResult> Delete([FromQuery] DeleteJourney_ActivityCommand command)
         {
-            var dto = await _mediator.Send(command);
-            return Ok(dto);
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }

@@ -1,6 +1,15 @@
 ﻿@page "/journey/{Id}"
 
 <h3>JourneyDetail</h3>
+<br />
+<br />
+<br />
+
+<a href="@("/add-activity/" + Id)">Add</a>
+
+<br />
+<br />
+<br />
 
 @foreach(var item in Activities)
 {
