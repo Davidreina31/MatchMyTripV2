@@ -1,4 +1,5 @@
 ﻿@page "/Activities"
+@rendermode InteractiveServer
 
 <h3>Activity</h3>
 
@@ -13,7 +14,28 @@
 <br />
 <br />
 
-@foreach(var item in Activities)
+@* @foreach(var item in Activities)
 {
     <h4>@item.ActivityName</h4>
-}
+    <button class="btn-danger" @onclick="() => Delete(item.Id)">Delete</button>
+} *@
+
+<table class="table table-striped table-light">
+    <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Activities)
+        {
+            <tr>
+
+                <td>@item.ActivityName</td>
+                <td><button class="btn-danger" @onclick="() => Delete(item.Id)">Delete</button></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

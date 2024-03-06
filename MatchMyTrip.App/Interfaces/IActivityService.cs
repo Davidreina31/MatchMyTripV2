@@ -1,4 +1,5 @@
 ﻿using MatchMyTrip.Application.features.activity.commands.createActivityCommand;
+using MatchMyTrip.Application.features.activity.commands.deleteActivityCommand;
 using MatchMyTrip.Application.features.activity.dto;
 
 namespace MatchMyTrip.App.Interfaces
@@ -7,5 +8,6 @@ namespace MatchMyTrip.App.Interfaces
     {
         Task<List<ActivityDTO>> GetActivities();
         Task<ActivityDTO> AddActivity(CreateActivityCommand activity);
+        Task DeleteActivity(DeleteActivityCommand activity);
     }
 }

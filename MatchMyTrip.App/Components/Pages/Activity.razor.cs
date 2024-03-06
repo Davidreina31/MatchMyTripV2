@@ -1,4 +1,5 @@
 ﻿using MatchMyTrip.App.Interfaces;
+using MatchMyTrip.Application.features.activity.commands.deleteActivityCommand;
 using MatchMyTrip.Application.features.activity.dto;
 using Microsoft.AspNetCore.Components;
 
@@ -19,9 +20,14 @@ namespace MatchMyTrip.App.Components.Pages
             Activities = await ActivityService.GetActivities();
         }
 
-        protected void NavigateToForm()
+        protected async Task Delete(Guid id)
         {
-            NavigationManager.NavigateTo("/add-activity");
+            DeleteActivityCommand deleteActivityCommand = new DeleteActivityCommand();
+            deleteActivityCommand.Id = id;
+            await ActivityService.DeleteActivity(deleteActivityCommand);
+
+            Activities = await ActivityService.GetActivities();
         }
+       
     }
 }

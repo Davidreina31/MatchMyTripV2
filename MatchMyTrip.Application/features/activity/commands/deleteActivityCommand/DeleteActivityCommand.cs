@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MatchMyTrip.Application.features.activity.commands.deleteActivityCommand
 {
-    public class DeleteActivityCommand : IRequest<ActivityCommandResponse>
+    public class DeleteActivityCommand : IRequest
     {
         public Guid Id { get; set; }
     }

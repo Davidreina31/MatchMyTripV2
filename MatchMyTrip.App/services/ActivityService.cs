@@ -1,8 +1,10 @@
 ﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.activity.commands.createActivityCommand;
+using MatchMyTrip.Application.features.activity.commands.deleteActivityCommand;
 using MatchMyTrip.Application.features.activity.dto;
 using MatchMyTrip.Application.features.search.commands.searchByKeyWord;
 using MatchMyTrip.Application.features.user.dtos;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 
@@ -33,6 +35,11 @@ namespace MatchMyTrip.App.services
             }
 
             return null;
+        }
+
+        public async Task DeleteActivity(DeleteActivityCommand activity)
+        {
+            await _client.DeleteAsync(_url + "api/Activity?Id=" + activity.Id);
         }
 
         public async Task<List<ActivityDTO>> GetActivities()
