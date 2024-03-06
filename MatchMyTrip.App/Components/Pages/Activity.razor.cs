@@ -11,9 +11,17 @@ namespace MatchMyTrip.App.Components.Pages
 
         public List<ActivityDTO> Activities { get; set; } = new List<ActivityDTO>();
 
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         protected override async Task OnInitializedAsync()
         {
             Activities = await ActivityService.GetActivities();
+        }
+
+        protected void NavigateToForm()
+        {
+            NavigationManager.NavigateTo("/add-activity");
         }
     }
 }

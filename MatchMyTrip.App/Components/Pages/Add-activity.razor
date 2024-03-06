@@ -1,0 +1,10 @@
+﻿@page "/add-activity"
+@rendermode InteractiveServer
+
+<h3>Add_activity</h3>
+
+<br />
+<br />
+<br />
+<input placeholder="activity" @bind="@CreateActivity.ActivityName" />
+<input type="submit"  class="btn-primary" onclick="@HandleValidSubmit" value="confirm"/>
