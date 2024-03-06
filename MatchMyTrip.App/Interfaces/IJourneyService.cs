@@ -1,4 +1,5 @@
-﻿using MatchMyTrip.Application.features.journey.dto;
+﻿using MatchMyTrip.Application.features.journey.commands.createJourneyCommand;
+using MatchMyTrip.Application.features.journey.dto;
 
 namespace MatchMyTrip.App.Interfaces
 {
@@ -6,5 +7,6 @@ namespace MatchMyTrip.App.Interfaces
     {
         Task<List<JourneyDTO>> GetAll();
         Task<JourneyDTO> GetById(Guid id);
+        Task<JourneyDTO> AddJourney(CreateJourneyCommand createJourneyCommand);
     }
 }

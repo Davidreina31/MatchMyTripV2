@@ -14,6 +14,7 @@ builder.Services.AddScoped<IActivityService, ActivityService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJourney_ActivityService, Journey_ActivityService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
+builder.Services.AddScoped<IJourneyService, JourneyService>();
 
 var app = builder.Build();
 

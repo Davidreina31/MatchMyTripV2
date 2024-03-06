@@ -41,7 +41,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CreateJourneyCommand>> Create([FromBody] CreateJourneyCommand command)
+        public async Task<ActionResult<JourneyDTO>> Create([FromBody] CreateJourneyCommand command)
         {
             var dto = await _mediator.Send(command);
             return Ok(dto);

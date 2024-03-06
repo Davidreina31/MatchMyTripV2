@@ -1,0 +1,25 @@
+﻿@page "/add-journey/{UserId}"
+@rendermode InteractiveServer
+
+<h3>Add_journey</h3>
+
+<br />
+<br />
+
+<input placeholder="destination" @bind="@JourneyCommand.Destination" />
+<br />
+<br />
+<input placeholder="nombre de jours" type="number" @bind="@JourneyCommand.NbrOfDays"/>
+<br />
+<br />
+<InputSelect @bind-Value="@JourneyCommand.Seasons">
+    @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
+    {
+        <option value="@item">@item</option>
+    }
+</InputSelect>
+<br />
+<br />
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">Add</button>
+
+

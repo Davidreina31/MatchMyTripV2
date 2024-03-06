@@ -7,8 +7,18 @@
     <p><em>Loading...</em></p>
 }
 
+<br />
+<br />
 
-<p>@User.UserName</p>
+<h4>@User.UserName</h4>
+
+<br />
+<br />
+
+<a href="@("/add-journey/" + User.Id)">Add journey to your profile</a>
+
+<br />
+<br />
 
 @foreach (var item in Journeys)
 {
