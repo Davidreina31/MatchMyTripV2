@@ -5,19 +5,30 @@
 
 <br />
 <br />
+<label class="col-form-label col-md-3">
+    Destination
+</label>
+<div class="col-md-8">
+    <input placeholder="destination" @bind="@Journey.Destination" />
+</div>
+<label class="col-form-label col-md-3">
+    Number of days
+</label>
+<div class="col-md-8">
+    <input placeholder="nombre de jours" type="number" @bind="@Journey.NbrOfDays" />
+</div>
 
-<input placeholder="destination" @bind="@Journey.Destination" />
-<br />
-<br />
-<input placeholder="nombre de jours" type="number" @bind="@Journey.NbrOfDays" />
-<br />
-<br />
-<InputSelect @bind-Value="@Journey.Seasons">
-    @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
-    {
-        <option value="@item">@item</option>
-    }
-</InputSelect>
+<label class="col-form-label col-md-3">
+    Season
+</label>
+<div class="col-md-8">
+    <InputSelect @bind-Value="@Journey.Seasons">
+        @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
+        {
+            <option value="@item">@item</option>
+        }
+    </InputSelect>
+</div>
 <br />
 <br />
 <button type="submit" class="btn-primary" onclick="@HandleValidSubmit">Edit</button>
