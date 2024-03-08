@@ -35,8 +35,9 @@ namespace MatchMyTrip.Application.features.user.commands.updateUserCommand
                 UserName = request.UserName,
                 Email = request.Email,
                 Description = request.Description,
-                ProfilePicture = request.ProfilePicture,
-                Role = request.Role
+                Role = request.Role,
+                ImageContent = request.ImageContent,
+                ImageName = request.ImageName
             };
 
             user = await _repo.UpdateAsync(user);

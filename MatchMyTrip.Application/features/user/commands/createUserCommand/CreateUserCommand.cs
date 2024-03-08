@@ -21,7 +21,8 @@ namespace MatchMyTrip.Application.features.user.commands.createUserCommand
 
         public string Description { get; set; }
 
-        public string ProfilePicture { get; set; }
+        public byte[] ImageContent { get; set; }
 
+        public string? ImageName { get; set; }
     }
 }

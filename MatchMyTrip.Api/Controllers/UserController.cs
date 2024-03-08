@@ -21,10 +21,14 @@ namespace MatchMyTrip.Api.Controllers
     public class UserController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-        public UserController(IMediator mediator)
+        public UserController(IMediator mediator, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
         {
             _mediator = mediator;
+            _webHostEnvironment = webHostEnvironment;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [HttpGet]
@@ -44,6 +48,14 @@ namespace MatchMyTrip.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<CreateUserCommand>> Create([FromBody] CreateUserCommand command)
         {
+            string currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
+            var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{command.ImageName}";
+            var fileStream = System.IO.File.Create(path);
+            fileStream.Write(command.ImageContent, 0, command.ImageContent.Length);
+            fileStream.Close();
+
+            command.ImageName = $"https://{currentUrl}/uploads/{command.ImageName}";
+
             var dto = await _mediator.Send(command);
             return Ok(dto);
         }
@@ -51,6 +63,14 @@ namespace MatchMyTrip.Api.Controllers
         [HttpPut]
         public async Task<ActionResult> Update([FromBody] UpdateUserCommand command)
         {
+            string currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
+            var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{command.ImageName}";
+            var fileStream = System.IO.File.Create(path);
+            fileStream.Write(command.ImageContent, 0, command.ImageContent.Length);
+            fileStream.Close();
+
+            command.ImageName = $"https://{currentUrl}/uploads/{command.ImageName}";
+
             await _mediator.Send(command);
             return Ok();
         }

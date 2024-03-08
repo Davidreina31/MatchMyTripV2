@@ -16,6 +16,8 @@ builder.Services.AddScoped<IJourney_ActivityService, Journey_ActivityService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
 
+builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

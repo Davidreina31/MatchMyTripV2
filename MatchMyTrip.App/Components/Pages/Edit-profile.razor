@@ -5,6 +5,12 @@
 
 <br />
 <br />
+<label class="col-form-label col-md-3">
+    Profile picture
+</label>
+<div class="col-md-8">
+    <InputFile OnChange="OnInputFileChange" />
+</div>
 
 <label class="col-form-label col-md-3">
     First name
@@ -45,12 +51,6 @@
 </div>
 
 
-<label class="col-form-label col-md-3">
-    Profile picture
-</label>
-<div class="col-md-8">
-    <input placeholder="first name" @bind="@Profile.ProfilePicture" />
-</div>
 <br />
 <br />
 

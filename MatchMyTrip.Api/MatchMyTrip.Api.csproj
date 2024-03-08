@@ -23,4 +23,8 @@
     <ProjectReference Include="..\MatchMyTrip.Persistence\MatchMyTrip.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Uploads\" />
+  </ItemGroup>
+
 </Project>
