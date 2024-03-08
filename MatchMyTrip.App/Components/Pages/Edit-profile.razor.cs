@@ -38,7 +38,6 @@ namespace MatchMyTrip.App.Components.Pages
             UserCommand.Description = Profile.Description;
             UserCommand.ProfilePicture = Profile.ProfilePicture;
 
-            UserCommand.Password = Profile.Password;
             UserCommand.Role = Profile.Role;
 
             await UserService.UpdateUser(UserCommand);

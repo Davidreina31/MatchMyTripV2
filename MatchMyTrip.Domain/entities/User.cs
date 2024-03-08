@@ -20,8 +20,6 @@ namespace MatchMyTrip.Domain.entities
 
         public string Email { get; set; }
 
-        public string Password { get; set; }
-
         public string Description { get; set; }
 
         public string ProfilePicture { get; set; }
