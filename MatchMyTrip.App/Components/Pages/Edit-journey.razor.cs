@@ -36,7 +36,7 @@ namespace MatchMyTrip.App.Components.Pages
 
             await JourneyService.UpdateJourney(JourneyCommand);
 
-            NavigationManager.NavigateTo("/Journey/" + JourneyCommand.Id);
+            NavigationManager.NavigateTo("/Profile/" + Journey.UserId);
         }
     }
 }
