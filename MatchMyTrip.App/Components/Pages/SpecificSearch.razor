@@ -3,21 +3,30 @@
 
 <h3>SpecificSearch</h3>
 
-<input placeholder="destination" @bind="@SearchByFilters.Filter.Destination" />
-<br />
-<br />
-<input placeholder="nombre de jours" type="number" @bind="@SearchByFilters.Filter.NbrOfDays" />
+<label class="col-form-label col-md-3">Destination</label>
+<div class="col-md-8">
+    <input placeholder="destination" @bind="@SearchByFilters.Filter.Destination" />
+</div>
+
+<label class="col-form-label col-md-3">Number of days</label>
+<div class="col-md-8">
+    <input type="number" @bind="@SearchByFilters.Filter.NbrOfDays" />
+</div>
+
+<label class="col-form-label col-md-3">Season</label>
+<div class="col-md-8">
+    <InputSelect @bind-Value="@SearchByFilters.Filter.Seasons">
+        @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
+        {
+            <option value="@item">@item</option>
+        }
+    </InputSelect>
+</div>
+
 <br />
 <br />
 
-<InputSelect @bind-Value="@SearchByFilters.Filter.Seasons">
-    @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
-    {
-        <option value="@item">@item</option>
-    }
-</InputSelect>
-
-<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">rechercher</button>
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">search</button>
 
 <br />
 <br />
@@ -26,15 +35,15 @@
 
 <h4>@ErrorMsg</h4>
 
-@if(Journeys != null)
+@if (Journeys != null)
 {
     <table class="table table-striped table-light">
         <thead>
             <tr>
-                <th scope="col">Pseudo</th>
+                <th scope="col">Username</th>
                 <th scope="col">Destination</th>
-                <th scope="col">Nombre de jours</th>
-                <th scope="col">Saison</th>
+                <th scope="col">Number of days</th>
+                <th scope="col">Season</th>
                 <th scope="col">Match score</th>
                 <th></th>
             </tr>
@@ -49,7 +58,7 @@
                     <td>@item.Seasons</td>
                     <td>@item.MatchScore/3</td>
 
-                    <td><a href="@("/journey/" + item.Id)">Voir détails</a></td>
+                    <td><a href="@("/journey/" + item.Id)">View details</a></td>
                 </tr>
             }
         </tbody>
