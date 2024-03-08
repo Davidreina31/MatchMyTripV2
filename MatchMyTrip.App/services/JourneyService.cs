@@ -37,6 +37,11 @@ namespace MatchMyTrip.App.services
             return null;
         }
 
+        public async Task DeleteJourney(Guid id)
+        {
+            await _client.DeleteAsync(_url + "api/Journey?Id=" + id);
+        }
+
         public Task<List<JourneyDTO>> GetAll()
         {
             throw new NotImplementedException();

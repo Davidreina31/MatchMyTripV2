@@ -1,4 +1,6 @@
 ﻿using MatchMyTrip.App.Interfaces;
+using MatchMyTrip.Application.features.journey.commands.deleteJourneyCommand;
+using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.journey_activity.dtos;
 using Microsoft.AspNetCore.Components;
 
@@ -12,12 +14,31 @@ namespace MatchMyTrip.App.Components.Pages
         [Parameter]
         public string Id { get; set; }
 
+        public JourneyDTO Journey { get; set; } = new JourneyDTO();
+
         public List<Journey_ActivityQueryDTO> Activities { get; set; } = new List<Journey_ActivityQueryDTO>();
 
+        public DeleteJourneyCommand JourneyCommand { get; set; } = new DeleteJourneyCommand();
+
+        [Inject]
+        public IJourneyService JourneyService { get; set; }
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         protected override async Task OnInitializedAsync()
         {
+            Journey = await JourneyService.GetById(Guid.Parse(Id));
             Activities = await Journey_ActivityService.GetActivitiesByJourneyId(Guid.Parse(Id));
+        }
+
+        protected async Task Delete(Guid id)
+        {
+            JourneyCommand.Id = id;
+
+            await JourneyService.DeleteJourney(id);
+
+            NavigationManager.NavigateTo("/Profile/" + Journey.UserId);
         }
     }
 }

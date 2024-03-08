@@ -10,5 +10,6 @@ namespace MatchMyTrip.App.Interfaces
         Task<JourneyDTO> GetById(Guid id);
         Task<JourneyDTO> AddJourney(CreateJourneyCommand createJourneyCommand);
         Task UpdateJourney(UpdateJourneyCommand updateJourneyCommand);
+        Task DeleteJourney(Guid id);
     }
 }

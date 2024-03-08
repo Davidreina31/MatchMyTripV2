@@ -55,10 +55,10 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpDelete]
-        public async Task<ActionResult<DeleteJourneyCommand>> Delete([FromQuery] DeleteJourneyCommand command)
+        public async Task<ActionResult> Delete([FromQuery] DeleteJourneyCommand command)
         {
-            var dto = await _mediator.Send(command);
-            return Ok(dto);
+            await _mediator.Send(command);
+            return Ok();
         }
     }
 }

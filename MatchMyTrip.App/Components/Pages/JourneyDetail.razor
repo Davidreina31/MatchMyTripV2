@@ -1,6 +1,11 @@
 ﻿@page "/journey/{Id}"
+@rendermode InteractiveServer
 
+<button class="btn-danger" @onclick="() => Delete(Guid.Parse(Id))">Delete</button>
+<br />
+<br />
 <a href="@("/Edit-journey/" + Id)">Edit journey</a>
+
 
 <br />
 <br />
