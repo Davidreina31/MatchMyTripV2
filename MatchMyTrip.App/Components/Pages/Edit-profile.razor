@@ -1,0 +1,29 @@
+﻿@page "/edit-profile/{UserId}"
+@rendermode InteractiveServer
+
+<h3>Edit_profile</h3>
+
+<br />
+<br />
+
+<input placeholder="first name" @bind="@Profile.FirstName" />
+<br />
+<br />
+<input placeholder="last name" @bind="@Profile.LastName" />
+<br />
+<br />
+<input placeholder="user name" @bind="@Profile.UserName" />
+<br />
+<br />
+<input placeholder="email" @bind="@Profile.Email" />
+<br />
+<br />
+<input placeholder="description" @bind="@Profile.Description" />
+<br />
+<br />
+<input placeholder="photo de profil" @bind="@Profile.ProfilePicture" />
+
+<br />
+<br />
+
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">Edit</button>

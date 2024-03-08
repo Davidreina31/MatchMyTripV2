@@ -49,10 +49,10 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<UpdateUserCommand>> Update([FromBody] UpdateUserCommand command)
+        public async Task<ActionResult> Update([FromBody] UpdateUserCommand command)
         {
-            var dto = await _mediator.Send(command);
-            return Ok(dto);
+            await _mediator.Send(command);
+            return Ok();
         }
 
         [HttpDelete]

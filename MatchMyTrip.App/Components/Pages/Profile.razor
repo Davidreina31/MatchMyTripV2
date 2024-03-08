@@ -1,5 +1,9 @@
 ﻿@page "/Profile/{Id}"
 
+<a href="@("/edit-profile/" + User.Id)">Edit profile</a>
+<br />
+<br />
+
 <h3>Mon profil</h3>
 
 @if (User == null)
