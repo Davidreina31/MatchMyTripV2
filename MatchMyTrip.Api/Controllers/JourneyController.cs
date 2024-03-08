@@ -48,10 +48,10 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<UpdateJourneyCommand>> Update([FromBody] UpdateJourneyCommand command)
+        public async Task<ActionResult> Update([FromBody] UpdateJourneyCommand command)
         {
-            var dto = await _mediator.Send(command);
-            return Ok(dto);
+            await _mediator.Send(command);
+            return Ok();
         }
 
         [HttpDelete]

@@ -18,7 +18,5 @@ namespace MatchMyTrip.Application.features.journey.commands.updateJourneyCommand
         public int NbrOfDays { get; set; }
 
         public Seasons Seasons { get; set; }
-
-        public Guid UserId { get; set; }
     }
 }

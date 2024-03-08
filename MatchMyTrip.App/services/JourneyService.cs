@@ -4,6 +4,9 @@ using MatchMyTrip.Application.features.journey.commands.createJourneyCommand;
 using MatchMyTrip.Application.features.journey.dto;
 using System.Text.Json;
 using System.Text;
+using MatchMyTrip.Application.features.journey.commands.updateJourneyCommand;
+using System.Net.Http;
+using MatchMyTrip.Application.features.user.dtos;
 
 namespace MatchMyTrip.App.services
 {
@@ -39,9 +42,20 @@ namespace MatchMyTrip.App.services
             throw new NotImplementedException();
         }
 
-        public Task<JourneyDTO> GetById(Guid id)
+        public async Task<JourneyDTO> GetById(Guid id)
         {
-            throw new NotImplementedException();
+            var journey = await JsonSerializer.DeserializeAsync<JourneyDTO>
+                (await _client.GetStreamAsync(_url + "api/Journey/" + id), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            return journey;
+        }
+
+        public async Task UpdateJourney(UpdateJourneyCommand updateJourneyCommand)
+        {
+            var journeyJson =
+                new StringContent(JsonSerializer.Serialize(updateJourneyCommand), Encoding.UTF8, "application/json");
+
+            await _client.PutAsync(_url + "api/journey", journeyJson);
         }
     }
 }

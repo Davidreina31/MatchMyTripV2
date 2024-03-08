@@ -27,13 +27,15 @@ namespace MatchMyTrip.Application.features.journey.commands.updateJourneyCommand
         {
             var response = new JourneyCommandResponse();
 
+            var currentJourney = await _repo.GetByIdAsync(request.Id);
+
             var journey = new Journey()
             {
                 Id = request.Id,
                 Destination = request.Destination,
                 NbrOfDays = request.NbrOfDays,
                 Seasons = request.Seasons,
-                UserId = request.UserId
+                UserId = currentJourney.UserId
             };
 
             journey = await _repo.UpdateAsync(journey);

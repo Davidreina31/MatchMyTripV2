@@ -16,7 +16,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<MatchMyTripDbContext>(options =>
-                options.UseSqlServer(builder.Configuration.GetConnectionString("MatchMyTripConnectionString")));
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("MatchMyTripConnectionString"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+});
+                
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMatchRepository, MatchRepository>();
