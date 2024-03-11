@@ -1,47 +1,45 @@
 ﻿@page "/Profile/{Id}"
+<br>
+<br>
+<div class="col-md-5 mx-auto"> <!-- Profile widget -->
+  <div class="bg-white shadow rounded overflow-hidden">
+    <div class="px-4 pt-0 pb-4 cover">
+      <div class="media align-items-end profile-head">
+        <div class="profile mr-3"><img src=@User.ImageName alt="..." width="130"
+            class="rounded mb-2 img-thumbnail"></div>
 
-<a href="@("/edit-profile/" + User.Id)">Edit profile</a>
-<br />
-<br />
+        <div class="media-body mb-5">
+          <h4 class="mt-0 mb-0">@User.UserName</h4>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="bg-light p-4 d-flex justify-content-end text-center">
 
-<h3>My profile</h3>
+    </div>
+    <div class="px-4 py-3">
+      <h5 class="mb-0">A propos</h5>
+      <div class="p-4 rounded shadow-sm bg-light">
+        <p class="font-italic mb-0">@User.Description</p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
 
-@if (User == null)
-{
-    <p><em>Loading...</em></p>
-}
-
-<br />
-<br />
-
-<div class="mb-3">
-    <img src="@User.ImageName" />
+<div class="list-group">
+    @foreach (var item in Journeys)
+    {
+        <br>
+        <a class="list-group-item list-group-item-action flex-column align-items-start active">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">@item.Destination</h5>
+            </div>
+            <p class="mb-1">Time : @item.NbrOfDays days</p>
+            <p class="mb-1">Season : @item.Seasons</p>
+            <br>
+            <p class="mb-1"><a href="@("/journey/" + item.Id)">View details</a></p>
+        </a>
+    }
 </div>
 
-<br />
-<br />
-
-<h4>@User.UserName</h4>
-
-<br />
-<br />
-<h5>@User.Description</h5>
-<br />
-<br />
-
-<a href="@("/add-journey/" + User.Id)">Add journey to your profile</a>
-
-<br />
-<br />
-
-@foreach (var item in Journeys)
-{
-    <h4>@item.Destination</h4>
-    <h4>@item.NbrOfDays days</h4>
-    <h4>@item.Seasons</h4>
-    <br />
-    <td><a href="@("/journey/" + item.Id)">View details</a></td>
-    <br />
-    <br />
-
-}
