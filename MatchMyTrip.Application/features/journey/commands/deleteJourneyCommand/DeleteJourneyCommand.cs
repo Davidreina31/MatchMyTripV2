@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MatchMyTrip.Application.features.journey.commands.deleteJourneyCommand
 {
-    public class DeleteJourneyCommand : IRequest<JourneyCommandResponse>
+    public class DeleteJourneyCommand : IRequest
     {
         public Guid Id { get; set; }
     }

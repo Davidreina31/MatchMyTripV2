@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace MatchMyTrip.Application.features.journey.commands.deleteJourneyCommand
 {
-    public class DeleteJourneyCommandHandler : IRequestHandler<DeleteJourneyCommand, JourneyCommandResponse>
+    public class DeleteJourneyCommandHandler : IRequestHandler<DeleteJourneyCommand>
     {
         private readonly IMapper _mapper;
         private readonly IRepository<Journey> _repo;
@@ -22,14 +22,9 @@ namespace MatchMyTrip.Application.features.journey.commands.deleteJourneyCommand
             _mapper = mapper;
             _repo = repo;
         }
-        public async Task<JourneyCommandResponse> Handle(DeleteJourneyCommand request, CancellationToken cancellationToken)
+        public async Task Handle(DeleteJourneyCommand request, CancellationToken cancellationToken)
         {
-            var response = new JourneyCommandResponse();
-            var journey = await _repo.DeleteAsync(request.Id);
-
-            response.Journey = _mapper.Map<JourneyDTO>(journey);
-
-            return response;
+            await _repo.DeleteAsync(request.Id);
         }
     }
 }

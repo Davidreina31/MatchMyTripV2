@@ -1,23 +1,34 @@
 ﻿@page "/add-journey/{UserId}"
 @rendermode InteractiveServer
 
-<h3>Add_journey</h3>
+<h3>Add journey</h3>
 
 <br />
 <br />
+<label class="col-form-label col-md-3">
+    Destination
+</label>
+<div class="col-md-8">
+    <input placeholder="destination" @bind="@JourneyCommand.Destination" />
+</div>
+<label class="col-form-label col-md-3">
+    Number of days
+</label>
+<div class="col-md-8">
+    <input placeholder="nombre de jours" type="number" @bind="@JourneyCommand.NbrOfDays" />
+</div>
 
-<input placeholder="destination" @bind="@JourneyCommand.Destination" />
-<br />
-<br />
-<input placeholder="nombre de jours" type="number" @bind="@JourneyCommand.NbrOfDays"/>
-<br />
-<br />
-<InputSelect @bind-Value="@JourneyCommand.Seasons">
-    @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
-    {
-        <option value="@item">@item</option>
-    }
-</InputSelect>
+<label class="col-form-label col-md-3">
+    Season
+</label>
+<div class="col-md-8">
+    <InputSelect @bind-Value="@JourneyCommand.Seasons">
+        @foreach (var item in Enum.GetValues(typeof(Domain.enums.Seasons)))
+        {
+            <option value="@item">@item</option>
+        }
+    </InputSelect>
+</div>
 <br />
 <br />
 <button type="submit" class="btn-primary" onclick="@HandleValidSubmit">Add</button>
