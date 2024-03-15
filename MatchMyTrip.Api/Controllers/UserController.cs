@@ -46,10 +46,10 @@ namespace MatchMyTrip.Api.Controllers
             return Ok(dtos);
         }
 
-        [HttpGet("email")]
-        public async Task<ActionResult<UserDTO>> GetByEmail(string email)
+        [HttpGet("sub")]
+        public async Task<ActionResult<UserDTO>> GetByEmail(string sub)
         {
-            var dtos = await _mediator.Send(new GetUserDetailsBySubQuery() { Sub = email });
+            var dtos = await _mediator.Send(new GetUserDetailsBySubQuery() { Sub = sub });
             return Ok(dtos);
         }
 
