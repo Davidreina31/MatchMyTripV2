@@ -6,10 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MatchMyTrip.Application.features.user.queries.getUserDetailsByEmail
+namespace MatchMyTrip.Application.features.user.queries.getUserDetailsBySub
 {
-    public class GetUserDetailsByEmailQuery : IRequest<UserDTO>
+    public class GetUserDetailsBySubQuery : IRequest<UserDTO>
     {
-        public string Email { get; set; }
+        public string Sub { get; set; }
     }
 }

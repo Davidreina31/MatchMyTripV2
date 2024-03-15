@@ -27,9 +27,9 @@ namespace MatchMyTrip.Persistence.repositories
             return user;
         }
 
-        public async Task<User> GetUserByEmail(string email)
+        public async Task<User> GetUserBySub(string sub)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == sub);
             return user;
         }
     }

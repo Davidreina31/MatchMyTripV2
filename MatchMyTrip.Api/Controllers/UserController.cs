@@ -9,7 +9,7 @@ using MatchMyTrip.Application.features.user.commands.deleteUserCommand;
 using MatchMyTrip.Application.features.user.commands.updateUserCommand;
 using MatchMyTrip.Application.features.user.dtos;
 using MatchMyTrip.Application.features.user.queries.getUserDetails;
-using MatchMyTrip.Application.features.user.queries.getUserDetailsByEmail;
+using MatchMyTrip.Application.features.user.queries.getUserDetailsBySub;
 using MatchMyTrip.Application.features.user.queries.getUsers;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -49,7 +49,7 @@ namespace MatchMyTrip.Api.Controllers
         [HttpGet("email")]
         public async Task<ActionResult<UserDTO>> GetByEmail(string email)
         {
-            var dtos = await _mediator.Send(new GetUserDetailsByEmailQuery() { Email = email });
+            var dtos = await _mediator.Send(new GetUserDetailsBySubQuery() { Sub = email });
             return Ok(dtos);
         }
 

@@ -12,6 +12,6 @@ namespace MatchMyTrip.Application.contracts
     {
         Task<User> GetUser(Guid id);
 
-        Task<User> GetUserByEmail(string email);
+        Task<User> GetUserBySub(string sub);
     }
 }
