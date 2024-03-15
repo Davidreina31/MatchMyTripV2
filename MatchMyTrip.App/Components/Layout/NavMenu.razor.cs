@@ -22,8 +22,11 @@ namespace MatchMyTrip.App.Components.Layout
             {
                 var state = await AuthenticationState;
 
+
                 if (state.User.Identity.IsAuthenticated)
                 {
+                    var userId = state.User.Claims.ToList()[4].Value;
+
                     CurrentUser = await UserService.GetUserByEmail(state.User.Identity.Name);
                 }
             }
