@@ -47,7 +47,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpGet("sub")]
-        public async Task<ActionResult<UserDTO>> GetByEmail(string sub)
+        public async Task<ActionResult<UserDTO>> GetBySub(string sub)
         {
             var dtos = await _mediator.Send(new GetUserDetailsBySubQuery() { Sub = sub });
             return Ok(dtos);

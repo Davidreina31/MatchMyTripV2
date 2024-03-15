@@ -23,6 +23,8 @@ namespace MatchMyTrip.Application.features.user.commands.updateUserCommand
 
         public string Description { get; set; }
 
+        public string Sub { get; set; }
+
         public Roles Role { get; set; }
         public byte[] ImageContent { get; set; }
         public string? ImageName { get; set; }

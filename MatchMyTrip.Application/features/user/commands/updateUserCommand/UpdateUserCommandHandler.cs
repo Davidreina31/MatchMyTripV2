@@ -35,6 +35,7 @@ namespace MatchMyTrip.Application.features.user.commands.updateUserCommand
                 UserName = request.UserName,
                 Email = request.Email,
                 Description = request.Description,
+                Sub = request.Sub,
                 Role = request.Role,
                 ImageContent = request.ImageContent,
                 ImageName = request.ImageName

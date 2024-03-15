@@ -20,6 +20,8 @@ namespace MatchMyTrip.App.Components.Pages
 
         private string Email = "";
 
+        private string Sub = "";
+
         private bool AlreadyExists = false;
 
         protected override async Task OnInitializedAsync()
@@ -44,11 +46,13 @@ namespace MatchMyTrip.App.Components.Pages
 
                     if (!AlreadyExists)
                     {
+                        Sub = state.User.Claims.ToList()[4].Value ?? string.Empty;
                         CreateCommand.Email = Email;
                         CreateCommand.Description = "";
                         CreateCommand.FirstName = "";
                         CreateCommand.LastName = "";
                         CreateCommand.UserName = state.User.Claims.FirstOrDefault().Value.ToString();
+                        CreateCommand.Sub = Sub;
                         CreateCommand.ImageContent = new byte[0];
 
                         await UserService.CreateUser(CreateCommand);

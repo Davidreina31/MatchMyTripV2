@@ -27,7 +27,7 @@ namespace MatchMyTrip.App.Components.Layout
                 {
                     var userId = state.User.Claims.ToList()[4].Value;
 
-                    CurrentUser = await UserService.GetUserByEmail(state.User.Identity.Name);
+                    CurrentUser = await UserService.GetUserBySub(userId);
                 }
             }
         }

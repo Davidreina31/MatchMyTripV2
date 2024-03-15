@@ -9,7 +9,7 @@ namespace MatchMyTrip.App.Interfaces
     {
         Task<List<UserDTO>> GetUsers();
         Task<UserQueryDTO> GetUserById(Guid id);
-        Task<UserDTO> GetUserByEmail(string email);
+        Task<UserDTO> GetUserBySub(string sub);
         Task<UserDTO> CreateUser(CreateUserCommand createUserCommand);
         Task UpdateUser(UpdateUserCommand updateUserCommand);
     }

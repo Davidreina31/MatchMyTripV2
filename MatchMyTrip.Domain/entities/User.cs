@@ -23,6 +23,8 @@ namespace MatchMyTrip.Domain.entities
 
         public string Description { get; set; }
 
+        public string Sub { get; set; }
+
         public Roles Role { get; set; }
 
         public List<Match> Matches { get; set; }

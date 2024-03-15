@@ -21,6 +21,8 @@ namespace MatchMyTrip.Application.features.user.dtos
 
         public string Description { get; set; }
 
+        public string Sub { get; set; }
+
         public Roles Role { get; set; }
 
         public byte[]? ImageContent { get; set; }
