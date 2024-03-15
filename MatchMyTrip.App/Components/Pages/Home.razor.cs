@@ -30,27 +30,31 @@ namespace MatchMyTrip.App.Components.Pages
             {
                 var state = await authenticationState;
 
-                Email = state?.User?.Identity?.Name ?? string.Empty; 
+                Email = state?.User?.Identity?.Name ?? string.Empty;
 
-                foreach (var user in Users)
+                if (Email != "")
                 {
-                    if(user.Email == Email)
+                    foreach (var user in Users)
                     {
-                        AlreadyExists = true;
+                        if (user.Email == Email)
+                        {
+                            AlreadyExists = true;
+                        }
+                    }
+
+                    if (!AlreadyExists)
+                    {
+                        CreateCommand.Email = Email;
+                        CreateCommand.Description = "";
+                        CreateCommand.FirstName = "";
+                        CreateCommand.LastName = "";
+                        CreateCommand.UserName = state.User.Claims.FirstOrDefault().Value.ToString();
+                        CreateCommand.ImageContent = new byte[0];
+
+                        await UserService.CreateUser(CreateCommand);
                     }
                 }
 
-                if (!AlreadyExists)
-                {
-                    CreateCommand.Email = Email;
-                    CreateCommand.Description = "";
-                    CreateCommand.FirstName = "";
-                    CreateCommand.LastName = "";
-                    CreateCommand.UserName = state.User.Claims.FirstOrDefault().Value.ToString();
-                    CreateCommand.ImageContent = new byte[0];
-
-                    await UserService.CreateUser(CreateCommand);
-                }
             }
         }
     }
