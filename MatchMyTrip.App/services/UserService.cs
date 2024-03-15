@@ -1,6 +1,9 @@
 ﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.activity.dto;
+using MatchMyTrip.Application.features.journey.commands.createJourneyCommand;
 using MatchMyTrip.Application.features.journey.commands.updateJourneyCommand;
+using MatchMyTrip.Application.features.journey.dto;
+using MatchMyTrip.Application.features.user.commands.createUserCommand;
 using MatchMyTrip.Application.features.user.commands.updateUserCommand;
 using MatchMyTrip.Application.features.user.dtos;
 using System.Text;
@@ -15,6 +18,24 @@ namespace MatchMyTrip.App.services
         public UserService(HttpClient client)
         {
             _client = client;
+        }
+
+        public async Task<UserDTO> CreateUser(CreateUserCommand createUserCommand)
+        {
+            var json =
+                new StringContent(JsonSerializer.Serialize(createUserCommand), Encoding.UTF8, "application/json");
+
+            var response = await _client.PostAsync(_url + "api/User", json);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var userCreated = await JsonSerializer.DeserializeAsync<UserDTO>
+                (await response.Content.ReadAsStreamAsync(), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+                return userCreated;
+            }
+
+            return null;
         }
 
         public async Task<UserQueryDTO> GetUserById(Guid id)

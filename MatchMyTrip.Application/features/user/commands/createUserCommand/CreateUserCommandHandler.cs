@@ -34,8 +34,8 @@ namespace MatchMyTrip.Application.features.user.commands.createUserCommand
                 Email = request.Email,
                 Description = request.Description,
                 Role = 0,
-                ImageContent = request.ImageContent,
-                ImageName = request.ImageName
+                ImageContent = request?.ImageContent,
+                ImageName = request?.ImageName
             };
 
             await _repo.AddAsync(user);
