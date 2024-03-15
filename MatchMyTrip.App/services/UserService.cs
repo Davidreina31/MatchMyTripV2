@@ -38,6 +38,14 @@ namespace MatchMyTrip.App.services
             return null;
         }
 
+        public async Task<UserDTO> GetUserByEmail(string email)
+        {
+            var user = await JsonSerializer.DeserializeAsync<UserDTO>
+                (await _client.GetStreamAsync(_url + "api/User/email?email=" + email), new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+
+            return user;
+        }
+
         public async Task<UserQueryDTO> GetUserById(Guid id)
         {
             var user = await JsonSerializer.DeserializeAsync<UserQueryDTO>
