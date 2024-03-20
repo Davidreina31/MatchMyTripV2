@@ -1,14 +1,8 @@
-﻿using Auth0.AspNetCore.Authentication;
-using Blazored.LocalStorage;
-using MatchMyTrip.App.Interfaces;
+﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.Application.features.user.commands.createUserCommand;
 using MatchMyTrip.Application.features.user.dtos;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.JSInterop;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MatchMyTrip.App.Components.Pages
 {
@@ -22,9 +16,6 @@ namespace MatchMyTrip.App.Components.Pages
         public CreateUserCommand CreateCommand { get; set; } = new CreateUserCommand();
 
         [Inject]
-        public ILocalStorageService LocalStorageService { get; set; }
-
-        [Inject]
         public AuthenticationStateProvider GetAuthenticationStateAsync { get; set; }
 
         private string Email = "";
@@ -32,9 +23,6 @@ namespace MatchMyTrip.App.Components.Pages
         private string? Sub;
 
         private bool AlreadyExists = false;
-
-        private bool localStorageSaved = false;
-
 
         protected override async Task OnInitializedAsync()
         {
@@ -73,25 +61,6 @@ namespace MatchMyTrip.App.Components.Pages
                     }
                 }
             }
-
-            StateHasChanged();
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender && !localStorageSaved)
-            {
-                var authstate = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
-                Sub = authstate.User.Claims.ToList()[4].Value;
-
-                await SaveUserDataToLocalStorage("userData", Sub); // Sauvegarder les données dans le LocalStorage
-                localStorageSaved = true; // Marquer que les données ont été sauvegardées
-            }
-        }
-
-        private async Task SaveUserDataToLocalStorage(string key, string data)
-        {
-            await LocalStorageService.SetItemAsync(key, data);
         }
     }
 }

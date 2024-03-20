@@ -20,6 +20,8 @@ builder.Services.AddScoped<IJourney_ActivityService, Journey_ActivityService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
 
+builder.Services.AddScoped<SharedService>();
+
 builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
