@@ -4,6 +4,7 @@ using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.App.services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,6 +19,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IJourney_ActivityService, Journey_ActivityService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
 builder.Services.AddScoped<IJourneyService, JourneyService>();
+
+builder.Services.AddBlazoredLocalStorage();
 
 builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
 
