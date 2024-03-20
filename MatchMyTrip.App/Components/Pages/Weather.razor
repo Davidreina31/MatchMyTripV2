@@ -1,10 +1,12 @@
 ﻿@page "/weather"
+@using Microsoft.AspNetCore.Components.Authorization
+@attribute [Authorize]
 @attribute [StreamRendering]
 
 <PageTitle>Weather</PageTitle>
 
 <h1>Weather</h1>
-
+<p>Hello @Username!</p>  <!-- 👈 new code -->
 <p>This component demonstrates showing data.</p>
 
 @if (forecasts == null)
@@ -39,8 +41,23 @@ else
 @code {
     private WeatherForecast[]? forecasts;
 
+    [CascadingParameter]
+    private Task<AuthenticationState>? authenticationState { get; set; }
+
+    private string Username = "";
+
+    // 👆 new code
     protected override async Task OnInitializedAsync()
     {
+        if (authenticationState is not null)
+        {
+            var state = await authenticationState;
+            
+            Username = state?.User?.Identity?.Name ?? string.Empty; //nom du User (ici une adresse mail)
+
+            Username = state.User.Claims.FirstOrDefault().Value.ToString(); //ici le nickname
+        }
+
         // Simulate asynchronous loading to demonstrate streaming rendering
         await Task.Delay(500);
 
@@ -62,3 +79,5 @@ else
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
     }
 }
+
+

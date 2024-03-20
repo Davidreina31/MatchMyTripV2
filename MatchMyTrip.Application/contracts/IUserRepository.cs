@@ -11,5 +11,7 @@ namespace MatchMyTrip.Application.contracts
     public interface IUserRepository
     {
         Task<User> GetUser(Guid id);
+
+        Task<User> GetUserBySub(string sub);
     }
 }

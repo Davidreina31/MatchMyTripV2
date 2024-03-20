@@ -56,6 +56,7 @@ namespace MatchMyTrip.App.Components.Pages
             UserCommand.LastName = Profile.LastName;
             UserCommand.UserName = Profile.UserName;
             UserCommand.Email = Profile.Email;
+            UserCommand.Sub = Profile.Sub;
             UserCommand.Description = Profile.Description;
             if (selectedFile == null)
             {

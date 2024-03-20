@@ -26,5 +26,11 @@ namespace MatchMyTrip.Persistence.repositories
 
             return user;
         }
+
+        public async Task<User> GetUserBySub(string sub)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Sub == sub);
+            return user;
+        }
     }
 }
