@@ -1,4 +1,5 @@
 ﻿using MatchMyTrip.App.Interfaces;
+using MatchMyTrip.App.services;
 using MatchMyTrip.Application.features.activity.dto;
 using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.journey_activity.dtos;
@@ -22,8 +23,6 @@ namespace MatchMyTrip.App.Components.Pages
 
         protected override async Task OnInitializedAsync()
         {
-            if(Id == null || Id == "Id")
-                Id = "DE1152A3-7DF4-4548-E134-08DC3452ABC2";
             User = await UserService.GetUserById(Guid.Parse(Id));
 
             Journeys = User.Journeys;
