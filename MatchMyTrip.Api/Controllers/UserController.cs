@@ -57,14 +57,6 @@ namespace MatchMyTrip.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<CreateUserCommand>> Create([FromBody] CreateUserCommand command)
         {
-            //string currentUrl = _httpContextAccessor.HttpContext.Request.Host.Value;
-            //var path = $"{_webHostEnvironment.WebRootPath}\\uploads\\{command.ImageName}";
-            //var fileStream = System.IO.File.Create(path);
-            //fileStream.Write(command.ImageContent, 0, command.ImageContent.Length);
-            //fileStream.Close();
-
-            //command.ImageName = $"https://{currentUrl}/uploads/{command.ImageName}";
-
             var dto = await _mediator.Send(command);
             return Ok(dto);
         }
