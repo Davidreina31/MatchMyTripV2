@@ -4,6 +4,7 @@ using MatchMyTrip.Application.features.activity.commands.updateActivityCommand;
 using MatchMyTrip.Application.features.activity.dto;
 using MatchMyTrip.Application.features.activity.queries.getActivities;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,6 +29,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<ActivityDTO>> Create([FromBody] CreateActivityCommand command)
         {
             var dto = await _mediator.Send(command);
@@ -42,6 +44,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<ActionResult> Delete([FromQuery] DeleteActivityCommand command)
         {
             await _mediator.Send(command);

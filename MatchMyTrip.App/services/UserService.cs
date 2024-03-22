@@ -71,7 +71,8 @@ namespace MatchMyTrip.App.services
         {
             var accessToken = await _localStorageService.GetItem<AccessTokenResponse>("token");
 
-            _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.access_token);
+            if (accessToken != null)
+                _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", accessToken.access_token);
 
             var userJson =
                 new StringContent(JsonSerializer.Serialize(updateUserCommand), Encoding.UTF8, "application/json");
