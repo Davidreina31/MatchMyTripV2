@@ -82,7 +82,7 @@ namespace MatchMyTrip.App.Components.Pages
                 var token = await SessionService.GetAccessToken();
 
                 await LocalStorageService.SetItem("token", token);
-                localStorageSaved = true; // Marquer que les données ont été sauvegardées
+                localStorageSaved = true;
             }
 
             else if (!state.User.Identity.IsAuthenticated)
