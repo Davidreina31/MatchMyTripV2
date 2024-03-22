@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Components.Authorization;
 
 namespace MatchMyTrip.App.services
 {
-    public class SharedService
+    public class SharedService : ISharedService
     {
         private readonly AuthenticationStateProvider _authState;
         private readonly IUserService _userService;

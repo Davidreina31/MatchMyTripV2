@@ -21,7 +21,7 @@ builder.Services.AddScoped<IJourneyService, JourneyService>();
 builder.Services.AddScoped<ISessionService, SessionService>();
 builder.Services.AddScoped<IlocalStorageService, LocalStorageService>();
 
-builder.Services.AddScoped<SharedService>();
+builder.Services.AddScoped<ISharedService, SharedService>();
 
 builder.Services.AddServerSideBlazor().AddCircuitOptions(option => { option.DetailedErrors = true; });
 
