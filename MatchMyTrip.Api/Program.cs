@@ -2,6 +2,7 @@ using MatchMyTrip.Application.contracts;
 using MatchMyTrip.Application.mapper;
 using MatchMyTrip.Persistence.context;
 using MatchMyTrip.Persistence.repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
@@ -20,7 +21,17 @@ builder.Services.AddDbContext<MatchMyTripDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("MatchMyTripConnectionString"));
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
-                
+
+var domain = "https://dev-c4fngek5.us.auth0.com";
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = domain;
+    options.Audience = "https://localhost:7249";
+});
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IMatchRepository, MatchRepository>();

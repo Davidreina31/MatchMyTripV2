@@ -12,6 +12,7 @@ using MatchMyTrip.Application.features.user.queries.getUserDetails;
 using MatchMyTrip.Application.features.user.queries.getUserDetailsBySub;
 using MatchMyTrip.Application.features.user.queries.getUsers;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -69,6 +70,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult> Update([FromBody] UpdateUserCommand command)
         {
             var currentUser = await _mediator.Send(new GetUserDetailsQuery() { Id = command.Id });
