@@ -10,6 +10,7 @@ using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.journey.queries.getJourneyDetails;
 using MatchMyTrip.Application.features.journey.queries.getJournies;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult<JourneyDTO>> Create([FromBody] CreateJourneyCommand command)
         {
             var dto = await _mediator.Send(command);
@@ -48,6 +50,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public async Task<ActionResult> Update([FromBody] UpdateJourneyCommand command)
         {
             await _mediator.Send(command);
@@ -55,6 +58,7 @@ namespace MatchMyTrip.Api.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public async Task<ActionResult> Delete([FromQuery] DeleteJourneyCommand command)
         {
             await _mediator.Send(command);
