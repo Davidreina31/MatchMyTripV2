@@ -11,6 +11,12 @@ namespace MatchMyTrip.App.Components.Pages
         [Inject]
         public IUserService UserService { get; set; }
 
+        [Inject]
+        public ISessionService SessionService { get; set; }
+
+        [Inject]
+        public IlocalStorageService LocalStorageService { get; set; }
+
         public List<UserDTO> Users { get; set; } = new List<UserDTO>();
 
         public CreateUserCommand CreateCommand { get; set; } = new CreateUserCommand();
@@ -23,6 +29,8 @@ namespace MatchMyTrip.App.Components.Pages
         private string? Sub;
 
         private bool AlreadyExists = false;
+
+        private bool localStorageSaved = false;
 
         protected override async Task OnInitializedAsync()
         {
@@ -60,6 +68,26 @@ namespace MatchMyTrip.App.Components.Pages
                         await UserService.CreateUser(CreateCommand);
                     }
                 }
+            }
+
+            StateHasChanged();
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            var state = await GetAuthenticationStateAsync.GetAuthenticationStateAsync();
+
+            if (firstRender && !localStorageSaved && state.User.Identity.IsAuthenticated)
+            {
+                var token = await SessionService.GetAccessToken();
+
+                await LocalStorageService.SetItem("token", token);
+                localStorageSaved = true; // Marquer que les données ont été sauvegardées
+            }
+
+            else if (!state.User.Identity.IsAuthenticated)
+            {
+                await LocalStorageService.RemoveItem("token");
             }
         }
     }
