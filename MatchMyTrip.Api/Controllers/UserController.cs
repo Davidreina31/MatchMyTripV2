@@ -25,18 +25,26 @@ namespace MatchMyTrip.Api.Controllers
         private readonly IMediator _mediator;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly ILogger _logger;
 
-        public UserController(IMediator mediator, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor)
+        public UserController(IMediator mediator, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor, ILogger logger)
         {
             _mediator = mediator;
             _webHostEnvironment = webHostEnvironment;
             _httpContextAccessor = httpContextAccessor;
+            _logger = logger;
         }
 
         [HttpGet]
         public async Task<ActionResult<List<UserDTO>>> Get()
         {
             var dtos = await _mediator.Send(new GetUsersQuery());
+            _logger.LogInformation("Success User list ok");
+            _logger.LogWarning("test warning");
+            _logger.LogCritical("test critical");
+            _logger.LogDebug("test debug");
+            _logger.LogError("test error");
+            _logger.LogTrace("test trace");
             return Ok(dtos);
         }
 
