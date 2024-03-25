@@ -1,36 +1,42 @@
 ﻿@page "/Activities"
 @rendermode InteractiveServer
+@attribute [Authorize]
 
-<h3>Activities</h3>
 
-@if(Activities == null)
+@if(CurrentUser.Role == Domain.enums.Roles.admin)
 {
-    <p><em>Loading...</em></p>
-}
-<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<a href="/add-activity">Add</a>
-</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<br />
-<br />
-<br />
+    <h3>Activities</h3>
 
-<table class="table table-striped table-light">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Activities)
-        {
+    @if (Activities == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    <a href="/add-activity">Add</a>
+    <br />
+    <br />
+    <br />
+
+    <table class="table table-striped table-light">
+        <thead>
             <tr>
-
-                <td>@item.ActivityName</td>
-                <Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-                <td><button class="btn-danger" @onclick="() => Delete(item.Id)">Delete</button></td>
-                </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+                <th scope="col">Name</th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Activities)
+            {
+                <tr>
+                    <td>@item.ActivityName</td>
+                    <td><button class="btn-danger" @onclick="() => Delete(item.Id)">Delete</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+else
+{
+    <h1>Vous n'avez pas accès à cette page.</h1>
+}
+
