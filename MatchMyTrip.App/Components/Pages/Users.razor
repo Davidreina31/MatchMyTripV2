@@ -13,6 +13,7 @@
             <th scope="col">Username</th>
             <th scope="col">Role</th>
             <th></th>
+            <th></th>
 
         </tr>
     </thead>
@@ -28,6 +29,7 @@
                 <td>@item.Role</td>
 
                 <td><a href="@("/profile/" + item.Id)">View profile</a></td>
+                <td><a href="@("/edit-user/" + item.Id)">Edit</a></td>
             </tr>
         }
 

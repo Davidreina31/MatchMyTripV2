@@ -1,0 +1,58 @@
+﻿@page "/edit-user/{UserId}"
+@rendermode InteractiveServer
+
+<h3>Edit user</h3>
+
+<label class="col-form-label col-md-3">
+    First name
+</label>
+<div class="col-md-8">
+    <input placeholder="first name" @bind="@Profile.FirstName" />
+</div>
+
+<label class="col-form-label col-md-3">
+    Last name
+</label>
+<div class="col-md-8">
+    <input placeholder="last name" @bind="@Profile.LastName" />
+</div>
+
+
+<label class="col-form-label col-md-3">
+    Username
+</label>
+<div class="col-md-8">
+    <input placeholder="username" @bind="@Profile.UserName" />
+</div>
+
+
+<label class="col-form-label col-md-3">
+    Email
+</label>
+<div class="col-md-8">
+    <input placeholder="email" @bind="@Profile.Email" />
+</div>
+
+
+<label class="col-form-label col-md-3">
+    Description
+</label>
+<div class="col-md-8">
+    <input placeholder="description" @bind="@Profile.Description" />
+</div>
+
+<label class="col-form-label col-md-3">
+    Role
+</label>
+<div class="col-md-8">
+    <InputSelect @bind-Value="@Profile.Role">
+        @foreach (var item in Enum.GetValues(typeof(Domain.enums.Roles)))
+        {
+            <option value="@item">@item</option>
+        }
+    </InputSelect>
+</div>
+<br />
+<br />
+
+<button type="submit" class="btn-primary" onclick="@HandleValidSubmit">Edit</button>
