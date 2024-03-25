@@ -1,5 +1,4 @@
-﻿
-using MatchMyTrip.App.Interfaces;
+﻿using MatchMyTrip.App.Interfaces;
 using MatchMyTrip.App.services;
 using MatchMyTrip.Application.features.user.commands.updateUserCommand;
 using MatchMyTrip.Application.features.user.dtos;
