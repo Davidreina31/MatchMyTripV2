@@ -1,24 +1,25 @@
 ﻿@page "/journey/{Id}"
 @rendermode InteractiveServer
-<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<button class="btn-danger" @onclick="() => Delete(Guid.Parse(Id))">Delete</button>
-</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<br />
-<br />
-<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<a href="@("/Edit-journey/" + Id)">Edit journey</a>
-</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
 
-<br />
-<br />
+@if (IsSameUserAsProfile)
+{
+    <button class="btn-danger" @onclick="() => Delete(Guid.Parse(Id))">Delete</button>
+    <br />
+    <br />
+    <a href="@("/Edit-journey/" + Id)">Edit journey</a>
+
+    <br />
+    <br />
+}
 
 <h3>@Journey.Destination</h3>
 <br />
 <br />
-<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<a href="@("/add-activity/" + Id)">Add</a>
-</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
-<br />
+@if (IsSameUserAsProfile)
+{
+    <a href="@("/add-activity/" + Id)">Add</a>
+    <br />
+}
 
 <div class="list-group">
     @foreach (var item in Activities)

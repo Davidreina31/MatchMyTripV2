@@ -2,6 +2,7 @@
 using MatchMyTrip.Application.features.journey.commands.deleteJourneyCommand;
 using MatchMyTrip.Application.features.journey.dto;
 using MatchMyTrip.Application.features.journey_activity.dtos;
+using MatchMyTrip.Application.features.user.dtos;
 using Microsoft.AspNetCore.Components;
 
 namespace MatchMyTrip.App.Components.Pages
@@ -26,9 +27,23 @@ namespace MatchMyTrip.App.Components.Pages
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
+        public UserDTO CurrentUser { get; set; } = new UserDTO();
+
+        [Inject]
+        public ISharedService SharedService { get; set; }
+
+        public bool IsSameUserAsProfile { get; set; } = false;
+
         protected override async Task OnInitializedAsync()
         {
             Journey = await JourneyService.GetById(Guid.Parse(Id));
+
+            CurrentUser = await SharedService.GetCurrentUser();
+
+            if (CurrentUser.Id == Journey.UserId)
+            {
+                IsSameUserAsProfile = true;
+            }
             Activities = await Journey_ActivityService.GetActivitiesByJourneyId(Guid.Parse(Id));
         }
 
