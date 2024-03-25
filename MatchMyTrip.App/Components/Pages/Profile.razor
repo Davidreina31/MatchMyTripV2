@@ -1,37 +1,42 @@
 ﻿@page "/Profile/{Id}"
-@attribute [Authorize]
 
 <br>
 <br>
-<div class="col-md-5 mx-auto"> <!-- Profile widget -->
-  <div class="bg-white shadow rounded overflow-hidden">
-    <div class="px-4 pt-0 pb-4 cover">
-      <div class="media align-items-end profile-head">
-        <div class="profile mr-3"><img src=@User.ImageName alt="..." width="130"
-            class="rounded mb-2 img-thumbnail"></div>
+<div class="col-md-5 mx-auto">
+    <!-- Profile widget -->
+    <div class="bg-white shadow rounded overflow-hidden">
+        <div class="px-4 pt-0 pb-4 cover">
+            <div class="media align-items-end profile-head">
+                <div class="profile mr-3">
+                    <img src=@User.ImageName alt="..." width="130"
+                         class="rounded mb-2 img-thumbnail">
+                </div>
 
-        <div class="media-body mb-5">
-          <h4 class="mt-0 mb-0">@User.UserName</h4>
-          <br>
+                <div class="media-body mb-5">
+                    <h4 class="mt-0 mb-0">@User.UserName</h4>
+                    <br>
                     <br />
+                    <Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
                     <a href="@("/edit-profile/" + User.Id)">Edit profile</a>
+                    </Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="bg-light p-4 d-flex justify-content-end text-center">
+        </div>
+        <div class="px-4 py-3">
+            <h5 class="mb-0">A propos</h5>
+            <div class="p-4 rounded shadow-sm bg-light">
+                <p class="font-italic mb-0">@User.Description</p>
+            </div>
+        </div>
     </div>
-    <div class="bg-light p-4 d-flex justify-content-end text-center">
-
-    </div>
-    <div class="px-4 py-3">
-      <h5 class="mb-0">A propos</h5>
-      <div class="p-4 rounded shadow-sm bg-light">
-        <p class="font-italic mb-0">@User.Description</p>
-      </div>
-    </div>
-  </div>
 </div>
 <br>
 <br>
+<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
 <a href="@("/add-journey/" + User.Id)">Add journey to your profile</a>
+</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
 <br>
 <br>
 <div class="list-group">

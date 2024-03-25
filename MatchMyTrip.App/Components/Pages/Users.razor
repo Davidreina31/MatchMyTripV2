@@ -1,6 +1,8 @@
 ﻿@page "/users"
 
-<h1>BONJOUR @CurrentUser.UserName</h1>
+<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
+<h1>You are logged as @CurrentUser.UserName</h1>
+</Microsoft.AspNetCore.Components.Authorization.AuthorizeView>
 
 <table class="table table-striped table-light">
     <thead>
