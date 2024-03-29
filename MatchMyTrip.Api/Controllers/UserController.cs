@@ -39,12 +39,7 @@ namespace MatchMyTrip.Api.Controllers
         public async Task<ActionResult<List<UserDTO>>> Get()
         {
             var dtos = await _mediator.Send(new GetUsersQuery());
-            _logger.LogInformation("Success User list ok");
-            _logger.LogWarning("test warning");
-            _logger.LogCritical("test critical");
-            _logger.LogDebug("test debug");
-            _logger.LogError("test error");
-            _logger.LogTrace("test trace");
+            _logger.LogInformation("List of users displayed");
             return Ok(dtos);
         }
 
@@ -59,6 +54,9 @@ namespace MatchMyTrip.Api.Controllers
         public async Task<ActionResult<UserDTO>> GetBySub(string sub)
         {
             var dtos = await _mediator.Send(new GetUserDetailsBySubQuery() { Sub = sub });
+            if(dtos != null)
+                _logger.LogInformation($"User {dtos.UserName} displayed");
+
             return Ok(dtos);
         }
 
@@ -66,6 +64,8 @@ namespace MatchMyTrip.Api.Controllers
         public async Task<ActionResult<CreateUserCommand>> Create([FromBody] CreateUserCommand command)
         {
             var dto = await _mediator.Send(command);
+            _logger.LogInformation($"User {command.UserName} successfully created.");
+
             return Ok(dto);
         }
 
@@ -87,6 +87,9 @@ namespace MatchMyTrip.Api.Controllers
             }
 
             await _mediator.Send(command);
+
+            _logger.LogInformation($"User {command.UserName} successfully updated.");
+
             return Ok();
         }
 
