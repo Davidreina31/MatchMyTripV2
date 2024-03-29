@@ -25,9 +25,9 @@ namespace MatchMyTrip.Api.Controllers
         private readonly IMediator _mediator;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        private readonly ILogger _logger;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(IMediator mediator, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor, ILogger logger)
+        public UserController(IMediator mediator, IWebHostEnvironment webHostEnvironment, IHttpContextAccessor httpContextAccessor, ILogger<UserController> logger)
         {
             _mediator = mediator;
             _webHostEnvironment = webHostEnvironment;

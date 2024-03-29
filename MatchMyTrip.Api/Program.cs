@@ -49,11 +49,6 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.
 builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
-var serviceProvider = builder.Services.BuildServiceProvider();
-var logger = serviceProvider.GetService<ILogger<UserController>>();
-builder.Services.AddSingleton(typeof(ILogger), logger);
-
-
 var app = builder.Build();
 
 
